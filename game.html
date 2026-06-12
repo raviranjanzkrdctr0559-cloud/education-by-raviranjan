@@ -80,3 +80,174 @@ function checkSpeed() {
 
 </body>
 </html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Racing Game Pro</title>
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      font-family: Arial;
+      text-align: center;
+      color: white;
+    }
+
+    #game {
+      width: 300px;
+      height: 500px;
+      margin: auto;
+      background: #333;
+      position: relative;
+      overflow: hidden;
+      border: 3px solid white;
+      border-radius: 10px;
+    }
+
+    #car {
+      width: 40px;
+      height: 70px;
+      background: red;
+      position: absolute;
+      bottom: 10px;
+      left: 130px;
+      border-radius: 8px;
+    }
+
+    .enemy {
+      width: 40px;
+      height: 70px;
+      background: yellow;
+      position: absolute;
+      top: 0;
+      border-radius: 8px;
+    }
+
+    #scoreBoard {
+      margin: 10px;
+      font-size: 18px;
+    }
+
+    button {
+      padding: 10px;
+      margin: 5px;
+      font-size: 16px;
+    }
+
+    .controls {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>🏎️ Racing Game Pro</h2>
+
+<div id="scoreBoard">
+  Score: <span id="score">0</span> |
+  High Score: <span id="highScore">0</span>
+</div>
+
+<div id="game">
+  <div id="car"></div>
+</div>
+
+<div class="controls">
+  <button onclick="moveLeft()">⬅️ Left</button>
+  <button onclick="moveRight()">➡️ Right</button>
+</div>
+
+<button onclick="startGame()">🔄 Restart</button>
+
+<script>
+let car = document.getElementById("car");
+let game = document.getElementById("game");
+let scoreDisplay = document.getElementById("score");
+let highDisplay = document.getElementById("highScore");
+
+let score = 0;
+let gameOver = false;
+
+let highScore = localStorage.getItem("highScore") || 0;
+highDisplay.innerText = highScore;
+
+// Move functions
+function moveLeft() {
+  let left = car.offsetLeft;
+  if (left > 0) car.style.left = left - 20 + "px";
+}
+
+function moveRight() {
+  let left = car.offsetLeft;
+  if (left < 260) car.style.left = left + 20 + "px";
+}
+
+// Keyboard control
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") moveLeft();
+  if (e.key === "ArrowRight") moveRight();
+});
+
+// Enemy creation
+let enemyInterval;
+
+function createEnemy() {
+  let enemy = document.createElement("div");
+  enemy.classList.add("enemy");
+  enemy.style.left = Math.floor(Math.random() * 260) + "px";
+  game.appendChild(enemy);
+
+  let move = setInterval(() => {
+    if (gameOver) return;
+
+    enemy.style.top = enemy.offsetTop + 5 + "px";
+
+    // Collision
+    if (
+      enemy.offsetTop > 430 &&
+      enemy.offsetLeft > car.offsetLeft - 40 &&
+      enemy.offsetLeft < car.offsetLeft + 40
+    ) {
+      endGame();
+    }
+
+    // Passed enemy
+    if (enemy.offsetTop > 500) {
+      enemy.remove();
+      score++;
+      scoreDisplay.innerText = score;
+    }
+  }, 20);
+}
+
+function startGame() {
+  // reset
+  document.querySelectorAll(".enemy").forEach(e => e.remove());
+  score = 0;
+  gameOver = false;
+  scoreDisplay.innerText = score;
+  car.style.left = "130px";
+
+  clearInterval(enemyInterval);
+  enemyInterval = setInterval(createEnemy, 1200);
+}
+
+function endGame() {
+  gameOver = true;
+  clearInterval(enemyInterval);
+
+  if (score > highScore) {
+    highScore = score;
+    localStorage.setItem("highScore", highScore);
+    highDisplay.innerText = highScore;
+  }
+
+  alert("💥 Game Over! Score: " + score);
+}
+
+startGame();
+</script>
+
+</body>
+</html>
