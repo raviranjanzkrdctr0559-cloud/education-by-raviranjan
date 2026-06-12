@@ -1,51 +1,168 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Notes - Ravirankan kr.Education Hub</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes By Raviranjan Kr.</title>
+
 <style>
+
 body{
+margin:0;
 font-family:Arial,sans-serif;
-background:#f4f6f9;
+background:linear-gradient(135deg,#4facfe,#00f2fe);
+}
+
+.header{
+background:#0d6efd;
+color:white;
+text-align:center;
+padding:25px;
+font-size:35px;
+font-weight:bold;
+}
+
+.welcome{
+text-align:center;
+background:white;
+margin:20px;
+padding:30px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
 padding:20px;
 }
-h1{
-color:#0d6efd;
-}
+
 .card{
 background:white;
 padding:20px;
-border-radius:10px;
-box-shadow:0 2px 10px rgba(0,0,0,.1);
-margin-top:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
-a{
+
+.card h2{
+color:#0d6efd;
+}
+
+.drawing{
+font-size:70px;
+text-align:center;
+}
+
+.btn{
 display:inline-block;
-margin-top:10px;
-padding:10px 15px;
+padding:12px 20px;
 background:#0d6efd;
 color:white;
 text-decoration:none;
-border-radius:5px;
+border-radius:10px;
+margin-top:10px;
 }
+
+footer{
+background:#111;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:20px;
+}
+
 </style>
+
 </head>
 <body>
 
-<h1>📚 Notes Section</h1>
+<div class="header">
+📚 Notes By Raviranjan Kr.
+</div>
+
+<div class="welcome">
+<h1>🎉 Welcome Raviranjan Kr. 🎉</h1>
+<p>Welcome to your personal notes library.</p>
+</div>
+
+<div class="container">
 
 <div class="card">
-<h3>Science Notes</h3>
-<p>Download your science notes.</p>
-<a href="#">Download PDF</a>
+<div class="drawing">📐</div>
+<h2>Math Notes</h2>
+<p>
+Area of Rectangle = Length × Breadth<br><br>
+Area of Square = Side × Side<br><br>
+Distance = Speed × Time
+</p>
 </div>
 
 <div class="card">
-<h3>Math Notes</h3>
-<p>Download your maths notes.</p>
-<a href="#">Download PDF</a>
+<div class="drawing">🔬</div>
+<h2>Science Notes</h2>
+<p>
+Water Formula = H₂O<br><br>
+Oxygen helps in breathing.<br><br>
+Plants make food by photosynthesis.
+</p>
 </div>
 
-<a href="index.html">⬅ Back to Home</a>
+<div class="card">
+<div class="drawing">🌍</div>
+<h2>Geography Notes</h2>
+<p>
+Earth has 7 continents.<br><br>
+India is in Asia.<br><br>
+The Himalayas are the highest mountains.
+</p>
+</div>
+
+<div class="card">
+<div class="drawing">🏛️</div>
+<h2>Civics Notes</h2>
+<p>
+India is the world's largest democracy.<br><br>
+Citizens have Fundamental Rights and Duties.
+</p>
+</div>
+
+<div class="card">
+<div class="drawing">🚀</div>
+<h2>Motivation</h2>
+<p>
+Dream Big.<br>
+Work Hard.<br>
+Stay Consistent.<br>
+Success Will Follow.
+</p>
+</div>
+
+<div class="card">
+<div class="drawing">🎨</div>
+<h2>Drawing Corner</h2>
+
+<pre>
+   /\ 
+  /  \
+ /____\
+ | [] |
+ |____|
+</pre>
+
+<p>Simple House Drawing</p>
+
+</div>
+
+</div>
+
+<center>
+<a class="btn" href="index.html">🏠 Back To Home</a>
+</center>
+
+<footer>
+Made By Raviranjan Kr. ❤️
+</footer>
 
 </body>
 </html>
