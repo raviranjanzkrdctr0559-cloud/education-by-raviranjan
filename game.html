@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Typing Speed Test</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #f2f2f2;
+      padding: 20px;
+    }
+
+    #text {
+      font-size: 20px;
+      margin: 20px;
+      padding: 10px;
+      background: white;
+      display: inline-block;
+      border-radius: 10px;
+    }
+
+    textarea {
+      width: 80%;
+      height: 120px;
+      font-size: 18px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 22px;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>⌨️ Typing Speed Test</h1>
+
+<p>Type the text below:</p>
+
+<div id="text">The quick brown fox jumps over the lazy dog</div>
+
+<br>
+
+<textarea id="input" placeholder="Start typing here..."></textarea>
+
+<br>
+
+<button onclick="checkSpeed()">Check Speed</button>
+
+<div id="result"></div>
+
+<script>
+function checkSpeed() {
+  let text = document.getElementById("text").innerText;
+  let input = document.getElementById("input").value;
+
+  let time = 30; // fixed time idea
+  let wordsTyped = input.trim().split(" ").length;
+
+  let speed = Math.round((wordsTyped / time) * 60);
+
+  if (input === "") {
+    document.getElementById("result").innerHTML = "❌ Please type something!";
+  } else {
+    document.getElementById("result").innerHTML =
+      "🚀 Your Speed: " + speed + " WPM";
+  }
+}
+</script>
+
+</body>
+</html>
