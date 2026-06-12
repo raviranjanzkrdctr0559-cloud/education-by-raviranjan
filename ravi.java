@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ravi Education Hub</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f9;
+}
+
+header{
+background:#0d6efd;
+color:white;
+padding:20px;
+text-align:center;
+}
+
+.hero{
+padding:50px;
+text-align:center;
+background:white;
+margin:20px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.hero h1{
+font-size:40px;
+margin-bottom:10px;
+}
+
+.container{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+padding:20px;
+}
+
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 2px 10px rgba(0,0,0,.1);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+button{
+background:#0d6efd;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:8px;
+cursor:pointer;
+margin-top:10px;
+}
+
+footer{
+background:#212529;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+</style>
+
+</head>
+<body>
+
+<header>
+<h1>🚀 Ravi Education Hub</h1>
+</header>
+
+<section class="hero">
+<h1>Welcome Ravi 👋</h1>
+<p>Your Personal Learning Platform</p>
+<button onclick="showMessage()">Start Learning</button>
+</section>
+
+<div class="container">
+
+<div class="card">
+<h2>📚 Notes</h2>
+<p>Class notes, study material and revision content.</p>
+</div>
+
+<div class="card">
+<h2>🎤 Presentations</h2>
+<p>School and project presentations available here.</p>
+</div>
+
+<div class="card">
+<h2>📝 Quiz</h2>
+<p>Test your knowledge with practice quizzes.</p>
+</div>
+
+<div class="card">
+<h2>🎯 Goals</h2>
+<p>Track your study goals and progress.</p>
+</div>
+
+</div>
+
+<footer>
+<h3>Made By Ravi ❤️</h3>
+</footer>
+
+<script>
+function showMessage(){
+alert("Welcome Ravi! Keep Learning & Growing 🚀");
+}
+</script>
+
+</body>
+</html>
