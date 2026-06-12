@@ -1,168 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notes By Raviranjan Kr.</title>
-
 <style>
-
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#4facfe,#00f2fe);
-}
-
-.header{
-background:#0d6efd;
-color:white;
-text-align:center;
-padding:25px;
-font-size:35px;
-font-weight:bold;
-}
-
-.welcome{
-text-align:center;
-background:white;
-margin:20px;
-padding:30px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
-}
-
-.container{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
-gap:20px;
+font-family:Arial;
 padding:20px;
+background:#f4f6f9;
 }
-
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.2);
+textarea{
+width:100%;
+height:150px;
 }
-
-.card h2{
-color:#0d6efd;
-}
-
-.drawing{
-font-size:70px;
-text-align:center;
-}
-
-.btn{
-display:inline-block;
-padding:12px 20px;
-background:#0d6efd;
-color:white;
-text-decoration:none;
-border-radius:10px;
+button{
+padding:10px;
 margin-top:10px;
 }
-
-footer{
-background:#111;
-color:white;
-text-align:center;
-padding:20px;
-margin-top:20px;
+.note{
+background:white;
+padding:10px;
+margin-top:10px;
+border-radius:10px;
 }
-
 </style>
-
 </head>
 <body>
 
-<div class="header">
-📚 Notes By Raviranjan Kr.
-</div>
+<h1>📚 Welcome Notes By Raviranjan Kr.</h1>
 
-<div class="welcome">
-<h1>🎉 Welcome Raviranjan Kr. 🎉</h1>
-<p>Welcome to your personal notes library.</p>
-</div>
+<textarea id="noteInput" placeholder="Write your notes here"></textarea>
 
-<div class="container">
+<br>
 
-<div class="card">
-<div class="drawing">📐</div>
-<h2>Math Notes</h2>
-<p>
-Area of Rectangle = Length × Breadth<br><br>
-Area of Square = Side × Side<br><br>
-Distance = Speed × Time
-</p>
-</div>
+<button onclick="saveNote()">Save Note</button>
 
-<div class="card">
-<div class="drawing">🔬</div>
-<h2>Science Notes</h2>
-<p>
-Water Formula = H₂O<br><br>
-Oxygen helps in breathing.<br><br>
-Plants make food by photosynthesis.
-</p>
-</div>
+<button onclick="deleteNotes()">Delete All</button>
 
-<div class="card">
-<div class="drawing">🌍</div>
-<h2>Geography Notes</h2>
-<p>
-Earth has 7 continents.<br><br>
-India is in Asia.<br><br>
-The Himalayas are the highest mountains.
-</p>
-</div>
+<div id="notesContainer"></div>
 
-<div class="card">
-<div class="drawing">🏛️</div>
-<h2>Civics Notes</h2>
-<p>
-India is the world's largest democracy.<br><br>
-Citizens have Fundamental Rights and Duties.
-</p>
-</div>
+<script>
 
-<div class="card">
-<div class="drawing">🚀</div>
-<h2>Motivation</h2>
-<p>
-Dream Big.<br>
-Work Hard.<br>
-Stay Consistent.<br>
-Success Will Follow.
-</p>
-</div>
+function saveNote(){
 
-<div class="card">
-<div class="drawing">🎨</div>
-<h2>Drawing Corner</h2>
+let note=document.getElementById("noteInput").value;
 
-<pre>
-   /\ 
-  /  \
- /____\
- | [] |
- |____|
-</pre>
+if(note=="") return;
 
-<p>Simple House Drawing</p>
+let notes=JSON.parse(localStorage.getItem("notes")) || [];
 
-</div>
+notes.push(note);
 
-</div>
+localStorage.setItem("notes",JSON.stringify(notes));
 
-<center>
-<a class="btn" href="index.html">🏠 Back To Home</a>
-</center>
+document.getElementById("noteInput").value="";
 
-<footer>
-Made By Raviranjan Kr. ❤️
-</footer>
+showNotes();
+}
+
+function showNotes(){
+
+let notes=JSON.parse(localStorage.getItem("notes")) || [];
+
+let output="";
+
+for(let i=0;i<notes.length;i++){
+
+output += "<div class='note'>"+notes[i]+"</div>";
+
+}
+
+document.getElementById("notesContainer").innerHTML=output;
+}
+
+function deleteNotes(){
+
+localStorage.removeItem("notes");
+
+showNotes();
+}
+
+showNotes();
+
+</script>
 
 </body>
 </html>
