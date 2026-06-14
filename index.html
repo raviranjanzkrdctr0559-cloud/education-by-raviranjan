@@ -75,6 +75,13 @@ padding:20px;
 margin-top:30px;
 }
 </style>
+  input{
+width:100%;
+padding:10px;
+margin-top:8px;
+border:1px solid #ccc;
+border-radius:8px;
+}
 <head>
   <script src="app.js" defer></script>
 </head>
@@ -186,7 +193,7 @@ break;
 document.getElementById("primeResult").innerHTML =
 prime ? num+" is Prime ✅" : num+" is Not Prime ❌";
 }
-
+</script>
 function calculatePercentage(){
 let obtained=parseFloat(document.getElementById("obtained").value);
 let total=parseFloat(document.getElementById("total").value);
@@ -206,8 +213,6 @@ let bmi=weight/(height*height);
 document.getElementById("bmiResult").innerHTML =
 "BMI = " + bmi.toFixed(2);
 }
-
-</script>
 <script>
 function showMessage(){
 alert("Welcome Ravi! Keep Learning & Growing 🚀");
