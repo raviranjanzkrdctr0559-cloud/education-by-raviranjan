@@ -74,18 +74,14 @@ text-align:center;
 padding:20px;
 margin-top:30px;
 }
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raviranjan kr. Education Hub</title>
+</style>
 
 <link rel="icon" href="icon.png">
-
 <link rel="apple-touch-icon" href="icon.png">
-
 <link rel="manifest" href="manifest.json">
-<body>
 
+</head>
+<body>
 <header>
 <h1>🚀 Ravi Education Hub</h1>
 </header>
@@ -159,7 +155,8 @@ margin-top:30px;
 <button onclick="calculateBMI()">Calculate</button>
 <p id="bmiResult"></p>
 </div>
-<footer>
+
+  <footer>
 <h3>Made By Ravi ❤️</h3>
 </footer>
 <script>
@@ -200,16 +197,15 @@ alert("Welcome Ravi! Keep Learning & Growing 🚀");
 }
 </script>
 
-</body>
-
-</script>
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('/service-worker.js');
-}
-</script>
 <a href="game.html">⌨️ Typing Speed Test</a>
 <a href="game.html">🏎️ Racing Car Game</a>
 <a href="index.html">🏠 Home (edu)</a>
 <a href="notes.html">📒 Notes</a>
 <a href="game.html">🎮 Game</a>
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+</body>
+</html>
