@@ -151,7 +151,7 @@ margin-top:30px;
 <div class="card">
 <h2>⚖️ BMI Calculator</h2>
 <input type="number" id="weight" placeholder="Weight (kg)">
-<input type="number" id="height" placeholder="Height (m)">
+<input type="number" id="height" placeholder="Height (feet)">
 <button onclick="calculateBMI()">Calculate</button>
 <p id="bmiResult"></p>
 </div>
@@ -205,6 +205,53 @@ alert("Welcome Ravi! Keep Learning & Growing 🚀");
 <script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service-worker.js');
+}
+</script>
+
+  <script>
+function calculatePercentage(){
+  let obtained = parseFloat(document.getElementById("obtained").value);
+  let total = parseFloat(document.getElementById("total").value);
+
+  if(isNaN(obtained) || isNaN(total) || total <= 0){
+    document.getElementById("percentageResult").innerHTML =
+    "❌ Enter valid marks";
+    return;
+  }
+
+  let percentage = (obtained / total) * 100;
+
+  document.getElementById("percentageResult").innerHTML =
+  "📊 Percentage: " + percentage.toFixed(2) + "%";
+}
+
+function calculateBMI(){
+  let weight = parseFloat(document.getElementById("weight").value);
+  let heightFeet = parseFloat(document.getElementById("height").value);
+
+  if(isNaN(weight) || isNaN(heightFeet) || weight <= 0 || heightFeet <= 0){
+    document.getElementById("bmiResult").innerHTML =
+    "❌ Enter valid values";
+    return;
+  }
+
+  let heightMeter = heightFeet * 0.3048;
+  let bmi = weight / (heightMeter * heightMeter);
+
+  let status = "";
+
+  if(bmi < 18.5){
+    status = "⚠️ Underweight";
+  }else if(bmi < 25){
+    status = "✅ Normal";
+  }else if(bmi < 30){
+    status = "⚠️ Overweight";
+  }else{
+    status = "❌ Obese";
+  }
+
+  document.getElementById("bmiResult").innerHTML =
+  "⚖️ BMI: " + bmi.toFixed(1) + "<br>" + status;
 }
 </script>
 </body>
