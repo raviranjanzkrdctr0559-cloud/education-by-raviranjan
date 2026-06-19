@@ -1,18 +1,14 @@
 {
-  "name": "Raviranjan kr. Education Hub",
-  "short_name": "Raviranjan kr",
-  "start_url": "./",
+  "name": "🤖 Welcome to Education
+Created by Raviranjan Kr. ",
+  "short_name": "Raviranjan Edu",
+  "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#0d6efd",
+  "theme_color": "#2196f3",
   "icons": [
     {
-      "src": "icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon.png",
+      "src": "logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }
