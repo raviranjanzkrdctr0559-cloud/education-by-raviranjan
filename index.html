@@ -115,6 +115,7 @@ margin-top:30px;
 </div>
 
 </div>
+
 <div id="rating-box">
   <h3>⭐ Website ko Rate Karein</h3>
 
@@ -125,6 +126,14 @@ margin-top:30px;
   <button onclick="rate(5)">5 ⭐</button>
 
   <p id="result"></p>
+</div>
+
+<script>
+function rate(stars) {
+  document.getElementById("result").innerHTML =
+    "Thank You! Aapne " + stars + " ⭐ Rating Di Hai.";
+}
+</script>
 </div>
   <div class="card">
 <h2>🔢 Even / Odd Checker</h2>
