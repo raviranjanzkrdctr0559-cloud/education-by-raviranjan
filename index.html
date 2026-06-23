@@ -116,55 +116,110 @@ margin-top:30px;
 
 </div>
 
-<div id="rating-box">
-  <h3>⭐ Website Ko Rate Karein</h3>
+<div class="rating-box">
+  <h2>⭐ Rate Our Website</h2>
+  <p>Apna feedback zaroor dein</p>
 
-  <button onclick="rate(1)">⭐</button>
-  <button onclick="rate(2)">⭐⭐</button>
-  <button onclick="rate(3)">⭐⭐⭐</button>
-  <button onclick="rate(4)">⭐⭐⭐⭐</button>
-  <button onclick="rate(5)">⭐⭐⭐⭐⭐</button>
+  <div class="stars">
+    <span onclick="rate(1)">★</span>
+    <span onclick="rate(2)">★</span>
+    <span onclick="rate(3)">★</span>
+    <span onclick="rate(4)">★</span>
+    <span onclick="rate(5)">★</span>
+  </div>
 
-  <p id="result"></p>
+  <div id="text">Select rating</div>
+
+  <div class="stats">
+    <p>Total Ratings: <span id="total">0</span></p>
+    <p>Average Rating: <span id="avg">0</span> ⭐</p>
+  </div>
 </div>
 
 <style>
-#rating-box{
-  text-align:center;
-  padding:20px;
-  margin:20px auto;
-  max-width:400px;
+body{
+  font-family:Arial;
+  background:#f2f6ff;
+}
+
+.rating-box{
+  max-width:420px;
+  margin:50px auto;
   background:white;
-  border-radius:15px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
 }
 
-#rating-box button{
-  padding:10px 15px;
-  margin:5px;
-  border:none;
-  border-radius:10px;
+.stars span{
+  font-size:40px;
   cursor:pointer;
-  font-size:18px;
+  color:#ccc;
+  transition:0.3s;
 }
 
-#rating-box button:hover{
-  transform:scale(1.1);
+.stars span:hover{
+  transform:scale(1.2);
 }
 
-#result{
+.stars span.active{
+  color:gold;
+  text-shadow:0 0 10px gold;
+}
+
+#text{
   margin-top:15px;
-  font-size:18px;
   font-weight:bold;
-  color:green;
+}
+
+.stats{
+  margin-top:20px;
+  background:#f7f9ff;
+  padding:10px;
+  border-radius:10px;
 }
 </style>
 
 <script>
-function rate(stars){
-  document.getElementById("result").innerHTML =
-  "🎉 Thank You! Aapne " + stars + " Star Rating Di Hai.";
+let ratings = JSON.parse(localStorage.getItem("ratings")) || [];
+
+function rate(value){
+
+  ratings.push(value);
+  localStorage.setItem("ratings", JSON.stringify(ratings));
+
+  updateUI();
 }
+
+function updateUI(){
+
+  const stars = document.querySelectorAll(".stars span");
+
+  // last rating highlight
+  let last = ratings[ratings.length - 1];
+
+  stars.forEach((s,i)=>{
+    if(i < last){
+      s.classList.add("active");
+    } else {
+      s.classList.remove("active");
+    }
+  });
+
+  // average
+  let sum = ratings.reduce((a,b)=>a+b,0);
+  let avg = ratings.length ? (sum / ratings.length).toFixed(1) : 0;
+
+  document.getElementById("total").innerText = ratings.length;
+  document.getElementById("avg").innerText = avg;
+
+  document.getElementById("text").innerHTML =
+    "🎉 Thanks! You rated " + last + " star(s)";
+}
+
+// load on start
+updateUI();
 </script>
 </div>
   <div class="card">
